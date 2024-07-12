@@ -1,0 +1,33 @@
+//Pruebas de endpoint simil postman
+//Deben probarse con el proyecto levantado
+
+@Verifarma_Challenge_Backend_HostAddress = http://localhost:5203
+
+# Insertar datos aleatorios de farmacia
+GET {{Verifarma_Challenge_Backend_HostAddress}}/api/Farmacias/InsertarDatosAleatorios
+Accept: application/json
+
+###
+
+# Crear una nueva farmacia
+POST {{Verifarma_Challenge_Backend_HostAddress}}/api/Farmacias/CrearFarmacia
+Content-Type: application/json
+
+{
+    "nombre": "Farmacia Prueba",
+    "direccion": "Calle Falsa 123",
+    "latitud": 40.7128,
+    "longitud": -74.0060
+}
+
+###
+
+# Buscar farmacia por ID o nombre
+GET {{Verifarma_Challenge_Backend_HostAddress}}/api/Farmacias/BuscarFarmaciaById?nombre=Farmacia%20Prueba
+Accept: application/json
+
+###
+
+# Buscar farmacia cercana
+GET {{Verifarma_Challenge_Backend_HostAddress}}/api/Farmacias/BuscarFarmaciaCercana?latitud=40.7128&longitud=-74.0060
+Accept: application/json

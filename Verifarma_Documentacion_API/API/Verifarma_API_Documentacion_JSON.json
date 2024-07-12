@@ -1,0 +1,149 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Verifarma_Backend",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Farmacias/InsertarDatosAleatorios": {
+      "get": {
+        "tags": [
+          "Farmacias"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Farmacias/CrearFarmacia": {
+      "post": {
+        "tags": [
+          "Farmacias"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Farmacia"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Farmacia"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Farmacia"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Farmacias/BuscarFarmaciaById": {
+      "get": {
+        "tags": [
+          "Farmacias"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Farmacias/BuscarFarmaciaCercana": {
+      "get": {
+        "tags": [
+          "Farmacias"
+        ],
+        "parameters": [
+          {
+            "name": "latitud",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "longitud",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Farmacia": {
+        "required": [
+          "direccion",
+          "latitud",
+          "longitud",
+          "nombre"
+        ],
+        "type": "object",
+        "properties": {
+          "idFarmacia": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombre": {
+            "maxLength": 16,
+            "minLength": 0,
+            "type": "string"
+          },
+          "direccion": {
+            "maxLength": 16,
+            "minLength": 0,
+            "type": "string"
+          },
+          "latitud": {
+            "type": "number",
+            "format": "double"
+          },
+          "longitud": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

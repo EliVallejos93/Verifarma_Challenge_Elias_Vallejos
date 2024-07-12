@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Verifarma_Challenge_Backend.props" />
+</Project>
